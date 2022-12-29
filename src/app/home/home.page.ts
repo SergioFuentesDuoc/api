@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GetapiService } from '../services/getapi.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  getdata:any[]=[];
+  constructor( public _services: GetapiService) {
 
-  constructor() {}
+    this._services.getdata<any[]>("").subscribe(data => {
+      this.getdata = data
+      console.log(this.getdata);
+
+    })
+
+
+  }
 
 }
